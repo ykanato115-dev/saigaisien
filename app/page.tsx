@@ -72,6 +72,7 @@ export default function Page() {
   if (demoRole === 'supporter') setRole('支援者')
   if (demoRole === 'admin') setRole('管理者')
   // END DEMO ACCESS
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return
   createClient().auth.getUser()
     .then(async ({ data: { user } }) => {
         if (!user) return
